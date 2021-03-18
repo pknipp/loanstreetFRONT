@@ -28,17 +28,16 @@ const DealForm = (props: DealFormProps) => {
   const handleCreateDeal = (e: React.SyntheticEvent) => {
     e.preventDefault();
     let missingSomething = false;
+    let newMessage = {...message};
     Object.entries({...newDeal}).forEach(([property, value]) => {
-      if (value === "") {
-        missingSomething = true;
-        setMessage({...message, [property]: "Missing quantity"})
-      }
+      let isEmpty = value === "";
+      missingSomething = missingSomething || isEmpty;
+      newMessage = {...newMessage, [property]: isEmpty ? "Required input" : ""};
     });
-    if (missingSomething) return;
+    if (missingSomething) return setMessage(newMessage);
     onCreateDeal({ ...newDeal });
     // Reset state for the next deal input.
     setNewDeal({ ...DEFAULT_DEAL });
-    setMessage({ ...DEFAULT_MESSAGE});
   };
 
   return (
