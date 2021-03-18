@@ -30,11 +30,12 @@ const DealForm = (props: DealFormProps) => {
     let missingSomething = false;
     let newMessage = {...message};
     Object.entries({...newDeal}).forEach(([property, value]) => {
-      let isEmpty = value === "";
+      let isEmpty = (value === "");
       missingSomething = missingSomething || isEmpty;
-      newMessage = {...newMessage, [property]: isEmpty ? "Required input" : ""};
+      newMessage = {...newMessage, [property]: (isEmpty ? "Required input" : "")};
     });
-    if (missingSomething) return setMessage(newMessage);
+    setMessage(newMessage);
+    if (missingSomething) return;
     onCreateDeal({ ...newDeal });
     // Reset state for the next deal input.
     setNewDeal({ ...DEFAULT_DEAL });
@@ -52,7 +53,7 @@ const DealForm = (props: DealFormProps) => {
           onChange={handleUpdateProperty("institution")}
           required
         />
-        {message.institution}
+        <div className='error'>{message.institution}</div>
       </div>
       <div className='NewDealForm--div'>
         <label className='NewDealForm--label'>Deal Type</label>
@@ -63,7 +64,7 @@ const DealForm = (props: DealFormProps) => {
           onChange={handleUpdateProperty("dealType")}
           required
         />
-        {message.dealType}
+        <div className='error'>{message.dealType}</div>
       </div>
       <div className='NewDealForm--div'>
         <label className='NewDealForm--label'>Deal Size</label>
@@ -74,7 +75,7 @@ const DealForm = (props: DealFormProps) => {
           onChange={handleUpdateProperty("dealSize")}
           required
         />
-        {message.dealSize}
+        <div className='error'>{message.dealSize}</div>
       </div>
       <button className='NewDealForm--button' onClick={handleCreateDeal}>
         Create Deal
