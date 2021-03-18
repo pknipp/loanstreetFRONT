@@ -10,6 +10,8 @@ const DEFAULT_DEAL: DealType = {
   isPublished: false,
 };
 
+const DEFAULT_MESSAGE = {...DEFAULT_DEAL};
+
 type DealFormProps = {
   onCreateDeal: (deal: DealType) => any;
 };
@@ -17,6 +19,7 @@ type DealFormProps = {
 const DealForm = (props: DealFormProps) => {
   const { onCreateDeal = noop } = props;
   const [newDeal, setNewDeal] = useState(DEFAULT_DEAL);
+  const [message, setMessage] = useState(DEFAULT_MESSAGE);
 
   const handleUpdateProperty = (property: string) => (
     e: React.ChangeEvent<any>
@@ -24,6 +27,14 @@ const DealForm = (props: DealFormProps) => {
 
   const handleCreateDeal = (e: React.SyntheticEvent) => {
     e.preventDefault();
+    let missingSomething = false;
+    Object.entries({...newDeal}).forEach(([property, value]) => {
+      if (value === "") {
+        missingSomething = true;
+        setMessage({...message, [property]: "Missing quantity"})
+      }
+    });
+    if (missingSomething) return;
     onCreateDeal({ ...newDeal });
     // Reset state for the next deal input.
     setNewDeal({ ...DEFAULT_DEAL });
@@ -41,6 +52,7 @@ const DealForm = (props: DealFormProps) => {
           onChange={handleUpdateProperty("institution")}
           required
         />
+        {message.institution}
       </div>
       <div className='NewDealForm--div'>
         <label className='NewDealForm--label'>Deal Type</label>
@@ -51,6 +63,7 @@ const DealForm = (props: DealFormProps) => {
           onChange={handleUpdateProperty("dealType")}
           required
         />
+        {message.dealType}
       </div>
       <div className='NewDealForm--div'>
         <label className='NewDealForm--label'>Deal Size</label>
@@ -61,6 +74,7 @@ const DealForm = (props: DealFormProps) => {
           onChange={handleUpdateProperty("dealSize")}
           required
         />
+        {message.dealSize}
       </div>
       <button className='NewDealForm--button' onClick={handleCreateDeal}>
         Create Deal

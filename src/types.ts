@@ -6,6 +6,12 @@ export type DealType = {
     isPublished: boolean
 }
 
+// export type MessageType = {
+//     institution: string;
+//     dealSize: string;
+//     dealType: string
+// }
+
 export type DealsListType = {
     deals: DealType[]
 }
