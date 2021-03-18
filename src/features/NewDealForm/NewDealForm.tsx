@@ -47,6 +47,7 @@ const DealForm = (props: DealFormProps) => {
       <div className='NewDealForm--div'>
         <label className='NewDealForm--label'>Institution</label>
         <input
+          style={{border:`1px solid ${message.institution ? "red" : "$RobinLight1"}`}}
           className='NewDealForm--input'
           value={newDeal.institution}
           placeholder='LS Credit Union'
@@ -58,6 +59,7 @@ const DealForm = (props: DealFormProps) => {
       <div className='NewDealForm--div'>
         <label className='NewDealForm--label'>Deal Type</label>
         <input
+          style={{border:`1px solid ${message.dealType ? "red" : "$RobinLight1"}`}}
           className='NewDealForm--input'
           value={newDeal.dealType}
           placeholder='Consumer Auto'
@@ -69,6 +71,7 @@ const DealForm = (props: DealFormProps) => {
       <div className='NewDealForm--div'>
         <label className='NewDealForm--label'>Deal Size</label>
         <input
+          style={{border:`1px solid ${message.dealSize ? "red" : "$RobinLight1"}`}}
           className='NewDealForm--input'
           value={newDeal.dealSize}
           placeholder='$1,000,000'

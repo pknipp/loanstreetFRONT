@@ -9,7 +9,7 @@ body {
   }
 
   margin: 0;
- 
+
   color: $Ink;
   font-size: $Body;
   background-color: $Fog;
@@ -20,6 +20,7 @@ body {
     padding: 4px 8px;
     border-radius: 2px;
     border: 1px solid $RobinLight1;
+    // border: 1px solid red;
     outline: 0;
     font-size: $BodyLarge;
     &::placeholder {
