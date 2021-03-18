@@ -38,6 +38,7 @@ const DealForm = (props: DealFormProps) => {
     onCreateDeal({ ...newDeal });
     // Reset state for the next deal input.
     setNewDeal({ ...DEFAULT_DEAL });
+    setMessage({ ...DEFAULT_MESSAGE});
   };
 
   return (
