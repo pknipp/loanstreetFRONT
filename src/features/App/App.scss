@@ -1,0 +1,13 @@
+@import '../../theme.scss';
+
+.App {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 36px;
+  &--header {
+    background-color: $Charcoal;
+    position: fixed;
+    width: 100%;
+  }
+}

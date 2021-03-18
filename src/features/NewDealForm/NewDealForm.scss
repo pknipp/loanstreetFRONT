@@ -1,0 +1,21 @@
+@import "../../theme.scss";
+
+.NewDealForm {
+
+  &--div {
+    margin-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  &--label {
+    padding-bottom: 3px;
+    font-size: $BodySmall;
+  }
+
+  &--button {
+    margin-top: 8px;
+    align-self: flex-end;
+  }
+}

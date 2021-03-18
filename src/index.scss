@@ -1,0 +1,73 @@
+@import url("https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,600");
+@import "./theme.scss";
+
+body {
+  &,
+  input,
+  button {
+    font-family: "IBM Plex Sans", serif;
+  }
+
+  margin: 0;
+ 
+  color: $Ink;
+  font-size: $Body;
+  background-color: $Fog;
+
+  input {
+    background-color: $Marshmellow;
+    height: 16px;
+    padding: 4px 8px;
+    border-radius: 2px;
+    border: 1px solid $RobinLight1;
+    outline: 0;
+    font-size: $BodyLarge;
+    &::placeholder {
+      color: $Steel;
+    }
+    &:focus {
+      border: 1px solid $RobinDark;
+    }
+  }
+
+  button {
+    color: $Marshmellow;
+    background-color: $LoanstreetGreen;
+    box-sizing: content-box;
+    min-width: 16px;
+    min-height: min-content;
+    width: max-content;
+    border-width: 1px;
+    border-radius: 2px;
+    border-color: transparent;
+    &:focus {
+      outline: none;
+    }
+    &:hover {
+      background-color: $LoanstreetGreenDark;
+    }
+    &:active {
+      background-color: $LoanstreetGreenDark1;
+    }
+  }
+
+  .tile {
+    color: $Steel;
+    margin: 16px;
+    border-radius: 2px;
+    width: min-content;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3);
+    padding: 16px 24px 16px;
+    height: fit-content;
+    background-color: $Marshmellow;
+    height: 80vh;
+
+    &--header {
+      align-self: flex-start;
+      font-size: $Header;
+      margin-bottom: 16px;
+    }
+  }
+}
