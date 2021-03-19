@@ -1,12 +1,15 @@
 import { connect } from "react-redux";
+import { togglePublished } from "../../redux/actions";
 import DealsTable from "./DealsTable";
-import { DealsListType } from "../../types";
+import { DealType } from "../../types";
 
-const mapStateToProps = (state: DealsListType) => {
-  const { deals } = state;
-  return {
-    deals,
-  };
-};
+type DispatchType = (arg0: {
+  type: string;
+  payload: { deal: DealType };
+}) => any;
 
-export default connect(mapStateToProps)(DealsTable);
+const mapDispatchToProps = (dispatch: DispatchType) => ({
+  togglePublished: (deal: DealType) => dispatch(togglePublished(deal)),
+});
+
+export default connect(undefined, mapDispatchToProps)(DealsTable);

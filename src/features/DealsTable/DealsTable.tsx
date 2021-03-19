@@ -1,14 +1,18 @@
 import React from "react";
-import { DealsListType } from "../../types";
+import { DealsListType, DealType } from "../../types";
 import DealsTableRow from "./DealsTableRow/DealsTableRow";
 import "./DealsTable.scss";
 
-type DealsTableProps = DealsListType;
+type DealsTableProps = {
+  deals: DealsListType;
+  deal: DealType;
+  togglePublished: (deal: DealType) => any;
+};
 
 const DealsTable = (props: DealsTableProps) => {
-  const { deals } = props;
+  const { deals, togglePublished } = props;
   const dealsTableRows = deals.map((deal) => (
-    <DealsTableRow key={deal.id} deal={deal} />
+    <DealsTableRow key={deal.id} deal={deal} togglePublished={togglePublished} />
   ));
   return (
     <div className="tile">
