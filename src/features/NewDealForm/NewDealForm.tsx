@@ -27,15 +27,19 @@ const DealForm = (props: DealFormProps) => {
 
   const handleCreateDeal = (e: React.SyntheticEvent) => {
     e.preventDefault();
-    let missingSomething = false;
+    let faultyInputs = false;
     let newMessage = {...message};
     Object.entries({...newDeal}).forEach(([property, value]) => {
       let isEmpty = (value === "");
-      missingSomething = missingSomething || isEmpty;
+      faultyInputs = faultyInputs || isEmpty;
       newMessage = {...newMessage, [property]: (isEmpty ? "Required input" : "")};
     });
+    if (Number.isNaN(Number(newDeal.dealSize))) {
+      newMessage.dealSize = "Not a number";
+      faultyInputs = true;
+    }
     setMessage(newMessage);
-    if (missingSomething) return;
+    if (faultyInputs) return;
     onCreateDeal({ ...newDeal });
     // Reset state for the next deal input.
     setNewDeal({ ...DEFAULT_DEAL });
